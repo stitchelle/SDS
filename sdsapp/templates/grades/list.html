@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Grades</title>
+  </head>
+  <body>
+    <h1>Grades</h1>
+
+    <ol>
+    {% for grade in all_grades %}
+        <li>
+            {{ grade.name }}
+        </li>
+    {% endfor %}
+    </ol>
+  </body>
+</html>
