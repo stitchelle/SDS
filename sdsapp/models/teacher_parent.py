@@ -15,7 +15,7 @@ class TeacherParent(models.Model):
     email = models.CharField(max_length=55)
     password = models.CharField(max_length=25)
     # not sure if this is correct
-    teacher = models.BooleanField()
+    isTeacher = models.BooleanField()
 
 
 # These receiver hooks allow you to continue to

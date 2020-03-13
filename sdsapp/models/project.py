@@ -16,7 +16,7 @@ class Project(models.Model):
     grade = models.ForeignKey(Grade, on_delete=models.CASCADE)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     teacher_parent = models.ForeignKey(TeacherParent, on_delete=models.CASCADE)
-    image_path = models.CharField(max_length=255)
+    image_path = models.CharField(max_length=255, null=True)
     supplies_needed = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
 
