@@ -1,16 +1,15 @@
-import sqlite3
 from django.shortcuts import redirect, render, reverse
-from sdsapp.models import Grade
+from sdsapp.models import Subject
 from ..connection import Connection
 
 
-def grade_list(request):
+def subject_list(request):
     if request.method == 'GET':
-        all_grades = Grade.objects.all()
+        all_subjects = Subject.objects.all()
 
-        template = 'grades/list.html'
+        template = 'subjects/list.html'
         context = {
-            'all_grades': all_grades
+            'all_subjects': all_subjects
         }
 
         return render(request, template, context)

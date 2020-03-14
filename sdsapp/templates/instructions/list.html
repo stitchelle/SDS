@@ -6,13 +6,12 @@
     <title>Steam Driven School</title>
   </head>
   <body>
-    <h1>Projects</h1>
+    <h1>Instructions</h1>
 
     <ul>
-    {% for project in all_projects %}
+    {% for instruction in all_instructions %}
         <li>
-            {{ project.name }}
-            GONNA PUT IN MORE INFO LATER
+            {{ instruction.step_detail }}
         </li>
     {% endfor %}
     </ul>

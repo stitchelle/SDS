@@ -9,12 +9,6 @@ class TeacherParent(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    first_name = models.CharField(max_length=55)
-    last_name = models.CharField(max_length=55)
-    username = models.CharField(max_length=25)
-    email = models.CharField(max_length=55)
-    password = models.CharField(max_length=25)
-    # not sure if this is correct
     isTeacher = models.BooleanField()
 
 
