@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Steam Driven School</title>
+  </head>
+  <body>
+    <h1>Subjects</h1>
+
+    <ol>
+    {% for subject in all_subjects %}
+        <li>
+            {{ subject.name }}
+        </li>
+    {% endfor %}
+    </ol>
+  </body>
+</html>

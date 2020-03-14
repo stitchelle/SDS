@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Steam Driven School</title>
+  </head>
+  <body>
+    <h1>Instructions</h1>
+
+    <ul>
+    {% for instruction in all_instructions %}
+        <li>
+            {{ instruction.step_detail }}
+        </li>
+    {% endfor %}
+    </ul>
+  </body>
+</html>
