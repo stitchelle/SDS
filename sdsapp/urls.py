@@ -4,7 +4,7 @@ from .views import *
 app_name = "sdsapp"
 
 urlpatterns = [
-    path('', project_list, name='home'),
+    path('', home, name='home'),
     path('projects/', project_list, name='projects'),
     path('grades/', grade_list, name='grades'),
     path('instructions/', instruction_list, name='instructions'),
