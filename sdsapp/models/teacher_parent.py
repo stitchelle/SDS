@@ -27,15 +27,15 @@ def create_teacher_parent(sender, instance, created, **kwargs):
 # object will be saved.
 @receiver(post_save, sender=User)
 def save_teacher_parent(sender, instance, **kwargs):
-    instance.teacher_parent.save()
+    instance.teacherparent.save()
 
     class Meta:
-        verbose_name = ("teacher_parent")
-        verbose_name_plural = ("teacher_parents")
+        verbose_name = ("teacherparent")
+        verbose_name_plural = ("teacherparents")
 
     def __str__(self):
         return self.name
         
     def get_absolute_url(self):
-        return reverse("teacher_parent_detail", kwargs={"pk": self.pk})
+        return reverse("teacherparent_detail", kwargs={"pk": self.pk})
     
