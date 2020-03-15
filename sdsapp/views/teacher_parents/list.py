@@ -3,8 +3,9 @@ from django.shortcuts import render
 from django.shortcuts import redirect, render, reverse
 from sdsapp.models import TeacherParent
 from ..connection import Connection
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def teacher_parent_list(request):
     if request.method == 'GET':
 
