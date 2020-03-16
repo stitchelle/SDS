@@ -12,7 +12,7 @@ class Project(models.Model):
 
     # If two models are related, you open the model that represents the table with the foreign key and add a ForeignKey field.
     name = models.CharField(max_length=55)
-    instruction = models.ForeignKey(Instruction, on_delete=models.CASCADE)
+    instruction = models.CharField(max_length=500)
     grade = models.ForeignKey(Grade, on_delete=models.CASCADE)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     teacher_parent = models.ForeignKey(TeacherParent, on_delete=models.CASCADE)

@@ -9,51 +9,9 @@ from django.contrib.auth.decorators import login_required
 def project_list(request):
     if request.method == 'GET':
 
-        # ******** using SQL ********
-
-        # with sqlite3.connect(Connection.db_path) as conn:
-        #     conn.row_factory = sqlite3.Row
-        #     db_cursor = conn.cursor()
-
-        #     db_cursor.execute("""
-        #     select
-        #         p.id,
-        #         p.name,
-        #         p.supplies_needed,
-        #         p.description,
-        #         p.grade_id,
-        #         p.instruction_id,
-        #         p.subject_id,
-        #         p.teacher_parent_id,
-        #         p.image_path
-        #     from sdsapp_project p
-        #     """)
-
-        #     all_projects = []
-        #     dataset = db_cursor.fetchall()
-
-        #     for row in dataset:
-        #         project = Project()
-        #         project.id = row['id']
-        #         project.name = row['name']
-        #         project.supplies_needed = row['supplies_needed']
-        #         project.description = row['description']
-        #         project.grade_id = row['grade_id']
-        #         project.instruction_id = row['instruction_id']
-        #         project.subject_id = row['subject_id']
-        #         project.teacher_parent_id = row['teacher_parent_id']
-        #         project.image_path = row['image_path']
-
-        #         all_projects.append(project)
-        
-        # ********** using ORM ***********
-
         all_projects = Project.objects.all()
-
         grade_id = request.GET.get('grade', None)
-        instruction_id = request.GET.get('instruction', None)
         subject_id = request.GET.get('subject',None)
-        teacher_parent_id = request.GET.get('subject', None)
 
         template = 'projects/list.html'
         context = {
@@ -61,3 +19,24 @@ def project_list(request):
         }
 
         return render(request, template, context)
+    elif request.method == 'POST':
+        form_data = request.POST
+
+        current_user = request.user.teacherparent
+
+        # instantiate...
+        new_project = Project(
+            name = form_data['project'],
+            supplies_needed = form_data['supplies'],
+            description = form_data['description'],
+            instruction = form_data['instruction'],
+            grade_id = form_data["grade"],
+            subject_id = form_data["subject"],
+            teacher_parent_id = current_user.id
+        )
+
+        # and then save to the db
+        print(new_project.name)
+        new_project.save()
+
+        return redirect(reverse('sdsapp:projects'))

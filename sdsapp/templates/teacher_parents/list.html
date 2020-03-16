@@ -9,10 +9,10 @@
     <h1>Teachers</h1>
 
     <ol>
-    {% for teacherparent in all_teacherparents %}
+    {% for teacher_parent in all_teacher_parents %}
         <li>
-            {{ teacherparent.user.first_name }}
-            {{ teacherparent.user.last_name }}
+            {{ teacher_parent.user.first_name }}
+            {{ teacher_parent.user.last_name }}
         </li>
     {% endfor %}
     </ol>

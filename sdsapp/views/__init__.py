@@ -8,3 +8,5 @@ from .home import home
 from .auth.logout import logout_user
 
 from .subjects.form import subject_form
+from .projects.form import project_form
+

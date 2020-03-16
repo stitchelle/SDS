@@ -9,7 +9,7 @@ class TeacherParent(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    isTeacher = models.BooleanField()
+    is_teacher = models.BooleanField()
 
 
 # These receiver hooks allow you to continue to
@@ -27,15 +27,15 @@ def create_teacher_parent(sender, instance, created, **kwargs):
 # object will be saved.
 @receiver(post_save, sender=User)
 def save_teacher_parent(sender, instance, **kwargs):
-    instance.teacherparent.save()
+    instance.teacher_parent.save()
 
     class Meta:
-        verbose_name = ("teacherparent")
-        verbose_name_plural = ("teacherparents")
+        verbose_name = ("teacher_parent")
+        verbose_name_plural = ("teacher_parents")
 
     def __str__(self):
         return self.name
         
     def get_absolute_url(self):
-        return reverse("teacherparent_detail", kwargs={"pk": self.pk})
+        return reverse("teacher_parent_detail", kwargs={"pk": self.pk})
     
