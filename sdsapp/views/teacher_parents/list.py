@@ -11,37 +11,27 @@ from django.contrib.auth.decorators import login_required
 def teacher_parent_list(request):
     if request.method == 'GET':
 
-        # ******** using SQL **********
+        all_teacher_parents = TeacherParent.objects.all()
 
-        with sqlite3.connect(Connection.db_path) as conn:
-            conn.row_factory = model_factory(TeacherParent)
-            db_cursor = conn.cursor()
-
-            db_cursor.execute("""
-            select
-                tp.id,
-                tp.isTeacher,
-                tp.user_id,
-                u.first_name,
-                u.last_name,
-                u.username
-            from sdsapp_teacherparent tp
-            JOIN auth_user u 
-            on u.id = tp.user_id
-            """)
-
-            all_teacherparents = db_cursor.fetchall()
-
-        # ********* using ORM **********
-
-        # all_teacherparents = TeacherParent.objects.all()
-
-        # user_id = request.GET.get('user_id', None)
+        user_id = request.GET.get('user_id', None)
 
         template = 'teacher_parents/list.html'
         context = {
-            'all_teacherparents': all_teacherparents
+            'all_teacher_parents': all_teacher_parents
         }
 
         return render(request, template, context)
+    elif request.method == 'POST':
+        form_data = request.POST
+
+        # instantiate...
+        new_teacher_parent = TeacherParent(
+            user_id = request.user.id,
+            is_teacher = form_data['is_teacher'],
+        )
+
+        # and then save to the db
+        print(new_teacher_parent)
+        new_teacher_parent.save()
+
     

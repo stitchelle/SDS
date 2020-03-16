@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Steam Driven School</title>
+  </head>
+    <body>
+    <h1>New Project</h1>
+
+
+    <form action="{% url 'sdsapp:projects' %}" method="post">
+      {% csrf_token %}
+      <fieldset>
+          <label for="project">Project: </label>
+          <input id="project" type="text" name="project">
+      </fieldset>
+      <fieldset>
+          <label for="teacher_parent">Teacher: </label>
+          <select id="teacher_parent" type="text" name="teacher_parent">
+                {% for teacher_parent in all_teacher_parents %}
+                    <option value="{{ teacher_parent.user.id }}">{{ teacher_parent.user.first_name }}{{teacher_parent.user.last_name}}</option>
+                {% endfor %}
+          </select>
+      </fieldset>
+      <fieldset>
+          <label for="subject">Subject: </label>
+          <select id="subject" type="text" name="subject">
+                {% for subject in all_subjects %}
+                    <option value="{{ subject.id }}">{{ subject.name }}</option>
+                {% endfor %}
+          </select>
+      </fieldset>
+      <fieldset>
+          <label for="grade">Grade: </label>
+          <select id="grade" type="text" name="grade">
+                {% for grade in all_grades %}
+                    <option value="{{ grade.id }}">{{ grade.name }}</option>
+                {% endfor %}
+          </select>
+      </fieldset>
+      <fieldset>
+          <label for="supplies">Supplies: </label>
+          <textarea id="supplies" name="supplies"></textarea>
+      </fieldset>
+      <fieldset>
+          <label for="decription">Description: </label>
+          <textarea id="description" name="description"></textarea>
+      </fieldset>
+      <fieldset>
+          <label for="instruction">Instructions: </label>
+          <textarea id="instruction" name="instruction"></textarea>
+      </fieldset>
+
+      <input type="submit" value="Add It" />
+    </form>
+    </body>
+</html>

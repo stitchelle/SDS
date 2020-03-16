@@ -15,5 +15,6 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
 
     path('subject/form', subject_form, name='subject_form'),
+    path('project/form', project_form, name='project_form'),
 
 ]
