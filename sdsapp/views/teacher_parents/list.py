@@ -2,6 +2,8 @@ import sqlite3
 from django.shortcuts import render
 from django.shortcuts import redirect, render, reverse
 from sdsapp.models import TeacherParent
+from sdsapp.models import model_factory
+
 from ..connection import Connection
 from django.contrib.auth.decorators import login_required
 
@@ -12,7 +14,7 @@ def teacher_parent_list(request):
         # ******** using SQL **********
 
         with sqlite3.connect(Connection.db_path) as conn:
-            conn.row_factory = sqlite3.Row
+            conn.row_factory = model_factory(TeacherParent)
             db_cursor = conn.cursor()
 
             db_cursor.execute("""
@@ -28,16 +30,7 @@ def teacher_parent_list(request):
             on u.id = tp.user_id
             """)
 
-            all_teacherparents = []
-            dataset = db_cursor.fetchall()
-
-            for row in dataset:
-                teacherparent = TeacherParent()
-                teacherparent.id = row['id']
-                teacherparent.isTeacher = row['isTeacher']
-                teacherparent.user_id = row ['user_id']
-
-                all_teacherparents.append(teacherparent)
+            all_teacherparents = db_cursor.fetchall()
 
         # ********* using ORM **********
 

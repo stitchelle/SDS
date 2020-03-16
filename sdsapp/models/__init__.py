@@ -4,3 +4,4 @@ from .instruction import Instruction
 from .grade import Grade 
 from .subject import Subject
 
+from .modelfactory import model_factory

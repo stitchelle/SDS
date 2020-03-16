@@ -10,8 +10,10 @@ urlpatterns = [
     path('instructions/', instruction_list, name='instructions'),
     path('teacher_parents/', teacher_parent_list, name='teacher_parents'),
     path('subjects/', subject_list, name='subjects'),
+    
     path('accounts/', include('django.contrib.auth.urls')),
     path('logout/', logout_user, name='logout'),
 
+    path('subject/form', subject_form, name='subject_form'),
 
 ]
