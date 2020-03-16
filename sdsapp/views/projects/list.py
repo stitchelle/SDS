@@ -10,10 +10,8 @@ def project_list(request):
     if request.method == 'GET':
 
         all_projects = Project.objects.all()
-
         grade_id = request.GET.get('grade', None)
         subject_id = request.GET.get('subject',None)
-        teacher_parent_id = request.GET.get('teacher_parent', None)
 
         template = 'projects/list.html'
         context = {
@@ -24,6 +22,8 @@ def project_list(request):
     elif request.method == 'POST':
         form_data = request.POST
 
+        current_user = request.user.teacherparent
+
         # instantiate...
         new_project = Project(
             name = form_data['project'],
@@ -32,11 +32,11 @@ def project_list(request):
             instruction = form_data['instruction'],
             grade_id = form_data["grade"],
             subject_id = form_data["subject"],
-            teacher_parent_id = form_data["teacher_parent"]
+            teacher_parent_id = current_user.id
         )
 
         # and then save to the db
         print(new_project.name)
-        new_book.save()
+        new_project.save()
 
-        return redirect(reverse('sbsapp:projects'))
+        return redirect(reverse('sdsapp:projects'))

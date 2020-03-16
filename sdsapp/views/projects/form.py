@@ -12,9 +12,6 @@ from ..connection import Connection
 def get_projects():
     return Project.objects.all()
 
-def get_teacher_parents():
-    return TeacherParent.objects.all()
-
 def get_subjects():
     return Subject.objects.all()
 
@@ -25,13 +22,11 @@ def get_grades():
 def project_form(request):
     if request.method == 'GET':
         projects = get_projects()
-        teacher_parents = get_teacher_parents()
         subjects = get_subjects
         grades = get_grades
         template = 'projects/form.html'
         context = {
             'all_projects': projects,
-            'all_teacher_parents': teacher_parents,
             'all_subjects': subjects,
             'all_grades': grades
         }
