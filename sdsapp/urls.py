@@ -1,5 +1,7 @@
 from django.urls import include, path
 from .views import *
+from django.urls import path
+
 
 app_name = "sdsapp"
 
@@ -16,5 +18,8 @@ urlpatterns = [
 
     path('subject/form', subject_form, name='subject_form'),
     path('project/form', project_form, name='project_form'),
+
+    # The <int:project_id> part of that URL pattern is used to capture any integer that is the route parameter, and stores that number in the project_id variable.
+    path('projects/<int:project_id>/', project_details, name='project'),
 
 ]

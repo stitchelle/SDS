@@ -11,8 +11,7 @@
     <ul>
     {% for project in all_projects %}
         <li>
-            {{ project.name }}
-            GONNA PUT IN MORE INFO LATER
+          <a href="{% url 'sdsapp:project' project.id %}"> {{ project.name }} </a>
         </li>
     {% endfor %}
     </ul>
