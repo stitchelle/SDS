@@ -5,20 +5,8 @@ from sdsapp.models import Subject
 from sdsapp.models import model_factory
 from ..connection import Connection
 
-
 def get_subjects():
-    with sqlite3.connect(Connection.db_path) as conn:
-        conn.row_factory = model_factory(Subject)
-        db_cursor = conn.cursor()
-
-        db_cursor.execute("""
-        select
-            s.id,
-            s.name
-        from sdsapp_subject s
-        """)
-
-        return db_cursor.fetchall()
+    return Subject.objects.all()
 
 @login_required
 def subject_form(request):
