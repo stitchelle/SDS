@@ -22,4 +22,7 @@ urlpatterns = [
     # The <int:project_id> part of that URL pattern is used to capture any integer that is the route parameter, and stores that number in the project_id variable.
     path('projects/<int:project_id>/', project_details, name='project'),
 
+    path('projects/<int:project_id>/form/', project_edit_form, name='project_edit_form'),
+
+
 ]

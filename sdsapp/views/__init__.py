@@ -12,4 +12,6 @@ from .projects.form import project_form
 
 from .projects.details import project_details
 
+from .projects.form import project_form, project_edit_form
+
 
