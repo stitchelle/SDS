@@ -12,5 +12,14 @@
     <div>Supplies: {{ project.supplies_needed }}</div>
     <div>Instructions: {{ project.instruction }}</div>
 
+    <form action="{% url 'sdsapp:project_edit_form' project.id %}" method="GET">
+        {% csrf_token %}
+        <button>Edit</button>
+    </form>
+    <form action="{% url 'sdsapp:project' project.id %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="actual_method" value="DELETE">
+        <button>Delete</button>
+    </form>
   </body>
 </html>

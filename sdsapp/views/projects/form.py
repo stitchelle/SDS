@@ -22,11 +22,27 @@ def get_grades():
 def project_form(request):
     if request.method == 'GET':
         projects = get_projects()
-        subjects = get_subjects
-        grades = get_grades
+        subjects = get_subjects()
+        grades = get_grades()
         template = 'projects/form.html'
         context = {
             'all_projects': projects,
+            'all_subjects': subjects,
+            'all_grades': grades
+        }
+
+        return render(request, template, context)
+
+@login_required
+def project_edit_form(request, project_id):
+
+    if request.method == 'GET':
+        project = Project.objects.get(pk=project_id)
+        subjects = get_subjects()
+        grades = get_grades()
+        template = 'projects/form.html'
+        context = {
+            'project': project,
             'all_subjects': subjects,
             'all_grades': grades
         }

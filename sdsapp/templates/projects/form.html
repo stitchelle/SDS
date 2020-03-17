@@ -6,45 +6,55 @@
     <title>Steam Driven School</title>
   </head>
     <body>
-    <h1>New Project</h1>
 
+        {% if project.id is not None %}
+            <h1>Edit Project</h1>
+                <form action="{% url 'sdsapp:project' project.id %}" method="post">
+        {% else %}
+            <h1>New Project</h1>
+                <form action="{% url 'sdsapp:projects' %}" method="post">
+        {% endif %}
 
-    <form action="{% url 'sdsapp:projects' %}" method="post">
-      {% csrf_token %}
-      <fieldset>
-          <label for="project">Project: </label>
-          <input id="project" type="text" name="project">
-      </fieldset>
-      <fieldset>
-          <label for="subject">Subject: </label>
-          <select id="subject" type="text" name="subject">
-                {% for subject in all_subjects %}
-                    <option value="{{ subject.id }}">{{ subject.name }}</option>
-                {% endfor %}
-          </select>
-      </fieldset>
-      <fieldset>
-          <label for="grade">Grade: </label>
-          <select id="grade" type="text" name="grade">
-                {% for grade in all_grades %}
-                    <option value="{{ grade.id }}">{{ grade.name }}</option>
-                {% endfor %}
-          </select>
-      </fieldset>
-      <fieldset>
-          <label for="supplies">Supplies: </label>
-          <textarea id="supplies" name="supplies"></textarea>
-      </fieldset>
-      <fieldset>
-          <label for="decription">Description: </label>
-          <textarea id="description" name="description"></textarea>
-      </fieldset>
-      <fieldset>
-          <label for="instruction">Instructions: </label>
-          <textarea id="instruction" name="instruction"></textarea>
-      </fieldset>
+            {% csrf_token %}
+            <fieldset>
+                <label for="project">Project: </label>
+                <input id="project" type="text" name="project" value="{{ project.name }}">
+            </fieldset>
+            <fieldset>
+                <label for="subject">Subject: </label>
+                <select id="subject" type="text" name="subject">
+                        {% for subject in all_subjects %}
+                            <option {% if subject.id == project.subject_id %}selected{% endif %}  value="{{ subject.id }}">{{ subject.name }}</option>
+                        {% endfor %}
+                </select>
+            </fieldset>
+            <fieldset>
+                <label for="grade">Grade: </label>
+                <select id="grade" type="text" name="grade">
+                        {% for grade in all_grades %}
+                            <option {% if grade.id == project.grade_id %}selected{% endif %} value="{{ grade.id }}">{{ grade.name }}</option>
+                        {% endfor %}
+                </select>
+            </fieldset>
+            <fieldset>
+                <label for="supplies">Supplies: </label>
+                <textarea id="supplies" name="supplies">{{ project.supplies_needed }}</textarea>
+            </fieldset>
+            <fieldset>
+                <label for="decription">Description: </label>
+                <textarea id="description" name="description">{{ project.description }}</textarea>
+            </fieldset>
+            <fieldset>
+                <label for="instruction">Instructions: </label>
+                <textarea id="instruction" name="instruction">{{ project.instruction }}</textarea>
+            </fieldset>
 
-      <input type="submit" value="Add It" />
-    </form>
+            {% if project.id is not None %}
+                <input type="hidden" name="actual_method" value="PUT">
+                <input type="submit" value="Update" />
+            {% else %}
+                <input type="submit" value="Create" />
+            {% endif %}        
+            </form>
     </body>
 </html>
