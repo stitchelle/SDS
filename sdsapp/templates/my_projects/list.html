@@ -1,0 +1,15 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+    <h1>My Projects</h1>
+
+    {% comment %} <ol>
+    {% for book in all_books %}
+        <li>
+            {{ book.title }}
+            by {{book.author}}
+            published in {{book.year_published}}
+        </li>
+    {% endfor %}
+    </ol> {% endcomment %}
+{% endblock %}
