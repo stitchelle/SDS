@@ -22,7 +22,7 @@ def project_list(request):
     elif request.method == 'POST':
         form_data = request.POST
 
-        current_user = request.user.teacherparent
+        current_user = request.user.teacher_parent
 
         # instantiate...
         new_project = Project(

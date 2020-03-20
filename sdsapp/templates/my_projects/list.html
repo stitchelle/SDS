@@ -2,14 +2,13 @@
 
 {% block content %}
     <h1>My Projects</h1>
+        <a href=/project/form>Add New Project</a>
 
-    {% comment %} <ol>
-    {% for book in all_books %}
+    <ol>
+    {% for my_project in all_my_projects %}
         <li>
-            {{ book.title }}
-            by {{book.author}}
-            published in {{book.year_published}}
+            {{ my_project.name }}
         </li>
     {% endfor %}
-    </ol> {% endcomment %}
+    </ol>
 {% endblock %}
