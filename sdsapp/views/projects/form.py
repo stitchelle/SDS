@@ -1,7 +1,7 @@
 import sqlite3
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from sdsapp.models import TeacherParent
+from sdsapp.models import Teacher_Parent
 from sdsapp.models import Subject
 from sdsapp.models import Grade
 from sdsapp.models import Project

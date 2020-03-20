@@ -1,0 +1,14 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+    <h1>My Projects</h1>
+        <a href=/project/form>Add New Project</a>
+
+    <ol>
+    {% for my_project in all_my_projects %}
+        <li>
+            {{ my_project.name }}
+        </li>
+    {% endfor %}
+    </ol>
+{% endblock %}

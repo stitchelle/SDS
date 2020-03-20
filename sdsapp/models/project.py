@@ -5,7 +5,7 @@ from .subject import Subject
 from .instruction import Instruction 
 from .grade import Grade
 from .subject import Subject
-from .teacher_parent import TeacherParent
+from .teacher_parent import Teacher_Parent
 
 
 class Project(models.Model):
@@ -15,7 +15,7 @@ class Project(models.Model):
     instruction = models.CharField(max_length=500)
     grade = models.ForeignKey(Grade, on_delete=models.CASCADE)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    teacher_parent = models.ForeignKey(TeacherParent, on_delete=models.CASCADE)
+    teacher_parent = models.ForeignKey(Teacher_Parent, on_delete=models.CASCADE)
     image_path = models.CharField(max_length=255, null=True)
     supplies_needed = models.CharField(max_length=255)
     description = models.CharField(max_length=255)

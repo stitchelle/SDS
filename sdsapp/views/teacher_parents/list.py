@@ -1,7 +1,7 @@
 import sqlite3
 from django.shortcuts import render
 from django.shortcuts import redirect, render, reverse
-from sdsapp.models import TeacherParent
+from sdsapp.models import Teacher_Parent
 from sdsapp.models import model_factory
 
 from ..connection import Connection
@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 def teacher_parent_list(request):
     if request.method == 'GET':
 
-        all_teacher_parents = TeacherParent.objects.all()
+        all_teacher_parents = Teacher_Parent.objects.all()
 
         user_id = request.GET.get('user_id', None)
 
@@ -25,7 +25,7 @@ def teacher_parent_list(request):
         form_data = request.POST
 
         # instantiate...
-        new_teacher_parent = TeacherParent(
+        new_teacher_parent = Teacher_Parent(
             user_id = request.user.id,
             is_teacher = form_data['is_teacher'],
         )
