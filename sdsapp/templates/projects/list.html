@@ -2,12 +2,9 @@
 
 {% block content %}
     <h1>Projects</h1>
-
-    <ul>
     {% for project in all_projects %}
-        <li>
-          <a href="{% url 'sdsapp:project' project.id %}"> {{ project.name }} </a>
-        </li>
+      <h3><a href="{% url 'sdsapp:project' project.id %}"> {{ project.name }} </a></h3>
+      <p>{{ project.description }}</p>
     {% endfor %}
-    </ul>
+    
 {% endblock %}
