@@ -13,9 +13,15 @@ def get_project(project_id):
 @login_required
 def project_details(request, project_id):
     if request.method == 'GET':
+        current_user = request.user.teacher_parent
+
         project = get_project(project_id)
         template_name = 'projects/detail.html'
-        return render(request, template_name, {'project': project})
+        context = {
+            'current_user' : current_user.id,
+            'project': project
+        }
+        return render(request, template_name, context)
 
     elif request.method == 'POST':
         form_data = request.POST

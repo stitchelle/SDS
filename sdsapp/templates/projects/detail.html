@@ -3,23 +3,36 @@
 {% block content %}
     <h1>{{ project.name }}</h1>
 
-    <div>Description: 
-        <p>{{ project.description }}</p>
-    </div>
-    <div>Supplies: 
-        <p>{{ project.supplies_needed }}</p>
-    </div>
-    <div>Instructions: 
-        <p>{{ project.instruction }}</p>
-    </div>
+    {% if current_user == project.teacher_parent_id %}
+        <div>Description: 
+            <p>{{ project.description }}</p>
+        </div>
+        <div>Supplies: 
+            <p>{{ project.supplies_needed }}</p>
+        </div>
+        <div>Instructions: 
+            <p>{{ project.instruction }}</p>
+        </div>
 
-    <form action="{% url 'sdsapp:project_edit_form' project.id %}" method="GET">
-        {% csrf_token %}
-        <button>Edit</button>
-    </form>
-    <form action="{% url 'sdsapp:project' project.id %}" method="POST">
-        {% csrf_token %}
-        <input type="hidden" name="actual_method" value="DELETE">
-        <button>Delete</button>
-    </form>
+        <form action="{% url 'sdsapp:project_edit_form' project.id %}" method="GET">
+            {% csrf_token %}
+            <button>Edit</button>
+        </form>
+        <form action="{% url 'sdsapp:project' project.id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="actual_method" value="DELETE">
+            <button>Delete</button>
+        </form>
+
+    {% else %}
+        <div>Description: 
+            <p>{{ project.description }}</p>
+        </div>
+        <div>Supplies: 
+            <p>{{ project.supplies_needed }}</p>
+        </div>
+        <div>Instructions: 
+            <p>{{ project.instruction }}</p>
+        </div>
+    {% endif %}
 {% endblock %}

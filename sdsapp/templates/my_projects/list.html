@@ -6,7 +6,7 @@
 
     {% for my_project in all_my_projects %}
         <h3>
-            {{ my_project.name }}
+            <a href="{% url 'sdsapp:project' my_project.id %}"> {{ my_project.name }} </a>
         </h3>
         <p>{{ my_project.description }}</p>
     {% endfor %}
