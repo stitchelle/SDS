@@ -24,12 +24,16 @@
      <nav id="site-nav">
         <ol class="navList">
             <li class="navList__route"><a href="{% url 'sdsapp:home' %}">Home</a></li>
-            <li class="navList__route"><a href="{% url 'sdsapp:login' %}">Login</a></li>
-            <li class="navList__route"><a href="{% url 'sdsapp:register' %}">Register</a></li>
+            
+            {% if user.is_authenticated %}
             <li class="navList__route"><a href="{% url 'sdsapp:projects' %}">Projects</a></li>
             <li class="navList__route"><a href="{% url 'sdsapp:my_projects' %}">My Projects</a></li>
             {% comment %} <li class="navList__route"><a href="{% url 'sdsapp:dashboard' %}">Dashboards</a></li> {% endcomment %}
              <li class="navList__route"><a href="{% url 'sdsapp:logout' %}">Logout</a></li>
+            {% else %}
+            <li class="navList__route"><a href="{% url 'sdsapp:login' %}">Login</a></li>
+            <li class="navList__route"><a href="{% url 'sdsapp:register' %}">Register</a></li>
+            {% endif %}
         </ol>
     </nav>
 
