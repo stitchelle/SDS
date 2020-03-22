@@ -32,7 +32,7 @@ def register_user(request):
         login(request, new_user)
 
         # Redirect the browser to wherever you want to go after registering
-        return redirect(reverse('sdsapp:projects'))
+        return redirect(reverse('sdsapp:home'))
 
     # handles a request to load the empty form for the user to fill out
     else:
