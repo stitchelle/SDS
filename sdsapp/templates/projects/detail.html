@@ -3,9 +3,15 @@
 {% block content %}
     <h1>{{ project.name }}</h1>
 
-    <div>Description: {{ project.description }}</div>
-    <div>Supplies: {{ project.supplies_needed }}</div>
-    <div>Instructions: {{ project.instruction }}</div>
+    <div>Description: 
+        <p>{{ project.description }}</p>
+    </div>
+    <div>Supplies: 
+        <p>{{ project.supplies_needed }}</p>
+    </div>
+    <div>Instructions: 
+        <p>{{ project.instruction }}</p>
+    </div>
 
     <form action="{% url 'sdsapp:project_edit_form' project.id %}" method="GET">
         {% csrf_token %}
