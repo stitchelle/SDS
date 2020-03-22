@@ -4,11 +4,10 @@
     <h1>My Projects</h1>
         <a href=/project/form>Add New Project</a>
 
-    <ol>
     {% for my_project in all_my_projects %}
-        <li>
+        <h3>
             {{ my_project.name }}
-        </li>
+        </h3>
+        <p>{{ my_project.description }}</p>
     {% endfor %}
-    </ol>
 {% endblock %}
