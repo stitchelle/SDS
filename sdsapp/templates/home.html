@@ -1,7 +1,14 @@
 {% extends 'shared/base.html' %}
 
 {% block content %}
-
-    <h1>Welcome to Steam Driven School</h1>
+    {% if user.is_authenticated %}
+        <h1>Welcome to Steam Driven School</h1>
+        <a href="{% url 'sdsapp:projects'%}">Browse Projects</a>
+        <a href=/project/form>Add New Project</a>
+    {% else %}
+        <h1>Welcome to Steam Driven School</h1>
+        <a href="{% url 'sdsapp:login'%}">Login</a>
+        <a href="{% url 'sdsapp:register'%}">Register</a>
+    {% endif %}
 
 {% endblock %}
