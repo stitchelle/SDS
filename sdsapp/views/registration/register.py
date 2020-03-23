@@ -23,10 +23,10 @@ def register_user(request):
         )
 
         # Second, make a teacher parent after the user has been created
-        Teacher_Parent = Teacher_Parent.objects.create(
+        teacher_parent = Teacher_Parent.objects.create(
             user=new_user,
             # If you have other form data to save on the new librarian, that isn't a property of the User model...
-            is_teacher=NULL
+            is_teacher=True
         )
 
         login(request, new_user)
