@@ -1,13 +1,16 @@
 {% extends 'shared/base.html' %}
 
 {% block content %}
-    <h1>Subjects</h1>
-
-    <ol>
-    {% for subject in all_subjects %}
-        <li>
-            {{ subject.name }}
-        </li>
-    {% endfor %}
-    </ol>
+    <div class="card" style="width: 20rem; margin-left: auto; margin-right: auto; margin-top: 50px;">  
+        <div class="card-body">
+            <center><h3 class="card-title">Subjects</h3>
+            <ol>
+                {% for subject in all_subjects %}
+                    <li style="text-align:left">
+                        {{ subject.name }}
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
 {% endblock %}
