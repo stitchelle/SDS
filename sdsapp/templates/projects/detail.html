@@ -24,13 +24,13 @@
                     <p class="card-text">{{ project.instruction }}</p>
                 </div>
                 <div class="row" style=" float: right;">
-                    <div class="col-sm-1"
+                    <div class="col-sm-1">
                         <form action="{% url 'sdsapp:project_edit_form' project.id %}" method="GET">
                             {% csrf_token %}
                             <button type="submit" class="btn" ><i class="fas fa-edit" style="color:gray;"></i></button>
                         </form>
                     </div>
-                    <div class="col-sm-1"
+                    <div class="col-sm-1">
                         <form action="{% url 'sdsapp:project' project.id %}" method="POST">
                             {% csrf_token %}
                             <input type="hidden" name="actual_method" value="DELETE">
