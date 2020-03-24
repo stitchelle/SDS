@@ -6,22 +6,12 @@
     <meta charset="utf-8">
     <title>Steam Driven School</title>
 
-    <style>
-        .navList {
-            list-style-type: none;
-            display: flex;
-            border: 1px solid lightgray;
-            padding: 1em;
-        }
-
-        .navList__route {
-            margin: 0 0.5em;
-        }
-    </style>
-
      <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- base.css -->
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}" />
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -31,7 +21,7 @@
 </head>
 
 <body>
-    <nav class="navbar sticky-top navbar-light" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
         <a class="navbar-brand" href="{% url 'sdsapp:home' %}">
             {% comment %} <img src="/Users/michellejohnson/workspace/steam-driven-school/sdsproject/sdsapp/images/train-toy-svgrepo-com.svg" width="30" height="30" class="d-inline-block align-top" alt=""> {% endcomment %}
             Steam Driven School
@@ -42,7 +32,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'sdsapp:home' %}">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{% url 'sdsapp:home' %}">Home</a>
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">

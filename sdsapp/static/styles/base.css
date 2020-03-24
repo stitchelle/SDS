@@ -1,0 +1,12 @@
+.navList {
+    list-style-type: none;
+    display: flex;
+    border: 1px solid lightgray;
+    padding: 1em;
+    width: 100%;
+}
+
+.navList__route {
+    margin: 0 0.5em;
+}
+
