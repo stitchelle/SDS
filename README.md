@@ -1,6 +1,6 @@
-# steam-driven-school
+# Steam Driven School
 
-##Steps to get the Steam Driven School System started:
+## Steps to get the Steam Driven School System started:
 * Clone the repo and cd into it
 
 * Create your OSX virtual environment in Terminal:
@@ -28,7 +28,7 @@
   
 * Populate your database with initial data from fixtures files: (NOTE: every time you run this it will remove exisiting data and repopulate the tables)
 
-  * `python manage.py loaddata` #Fill this in when you have fixtures!!!!!
+  * `python manage.py loaddata` # Fill this in when you have fixtures!!!!!
 
 * Fire up your dev server and get to work!
 
@@ -39,6 +39,6 @@ I developed this ERD for you to reference when creating your models.
 
 https://dbdiagram.io/d/5e41d3089e76504e0ef1467b
 
-##Using the Steam Driven School System:
+## Using the Steam Driven School System:
 
-#Fill this in LATER!!!!!
+# Fill this in LATER!!!!!
