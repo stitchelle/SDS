@@ -1,8 +1,8 @@
 {% extends 'shared/base.html' %}
 
 {% block content %}
-    <h3><center>My Projects</center></h3>
-        <center><a href=/project/form class="btn btn-primary btn-lg active btn-sm " role="button" aria-pressed="true">Add New Project</a></center>
+    <h3 style="margin-top : 20px;"><center>My Projects</center></h3>
+        <center><a href=/project/form class="btn btn-primary active btn-sm " role="button" aria-pressed="true">Add New Project</a></center>
 
     <div class="row row-cols-1 row-cols-md-3" style="margin-top: 20px; margin-left:auto; margin-right:auto"">
         {% for my_project in all_my_projects %}

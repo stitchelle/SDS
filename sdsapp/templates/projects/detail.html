@@ -1,38 +1,51 @@
 {% extends 'shared/base.html' %}
 
 {% block content %}
-    <h1>{{ project.name }}</h1>
+    <div class="card" style="width: 50rem; margin-left: auto; margin-right: auto; margin-top: 50px;">
+        <div class="card-body">
+            <center><h3 class="card-title">{{ project.name }}</h3></center>
 
-    {% if current_user == project.teacher_parent_id %}
-        <div>Description: 
-            <p>{{ project.description }}</p>
-        </div>
-        <div>Supplies: 
-            <p>{{ project.supplies_needed }}</p>
-        </div>
-        <div>Instructions: 
-            <p>{{ project.instruction }}</p>
-        </div>
+            {% if current_user == project.teacher_parent_id %}
+                <div class="row">
+                    <h6 class="card-title col-sm-2">Description:</h6> 
+                    <p class="card-text col">{{ project.description }}</p>
+                </div>
+                <div class="row">
+                    <h6 class="card-title col-sm-2">Supplies: </h6>
+                    <p class="card-text">{{ project.supplies_needed }}</p>
+                </div>
+                <div class="row">
+                    <h6 class="card-title col-sm-2">Instructions:</h6> 
+                    <p class="card-text">{{ project.instruction }}</p>
+                </div>
+                <div class="row" style=" float: right;">
+                    <div class="col-sm-1"
+                        <form action="{% url 'sdsapp:project_edit_form' project.id %}" method="GET">
+                            {% csrf_token %}
+                            <button type="submit" class="btn" ><i class="fas fa-edit" style="color:gray;"></i></button>
+                        </form>
+                    </div>
+                    <div class="col-sm-1"
+                        <form action="{% url 'sdsapp:project' project.id %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="actual_method" value="DELETE">
+                            <button type="submit" class="btn"><i class="fas fa-trash-alt" style="color:LightCoral;"></i></button>
+                        </form>
+                    </div>
+                </div>
+        
 
-        <form action="{% url 'sdsapp:project_edit_form' project.id %}" method="GET">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-primary btn-sm" >Edit</button>
-        </form>
-        <form action="{% url 'sdsapp:project' project.id %}" method="POST">
-            {% csrf_token %}
-            <input type="hidden" name="actual_method" value="DELETE">
-            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-        </form>
-
-    {% else %}
-        <div>Description: 
-            <p>{{ project.description }}</p>
+            {% else %}
+                <div>Description: 
+                    <p class="card-text">{{ project.description }}</p>
+                </div>
+                <div>Supplies: 
+                    <p class="card-text">{{ project.supplies_needed }}</p>
+                </div>
+                <div>Instructions: 
+                    <p class="card-text">{{ project.instruction }}</p>
+                </div>
+            {% endif %}
         </div>
-        <div>Supplies: 
-            <p>{{ project.supplies_needed }}</p>
-        </div>
-        <div>Instructions: 
-            <p>{{ project.instruction }}</p>
-        </div>
-    {% endif %}
+    </div>
 {% endblock %}
