@@ -4,6 +4,11 @@
     <div class="card" style="width: 50rem; margin-left: auto; margin-right: auto; margin-top: 50px;">
         <div class="card-body">
             <center><h3 class="card-title">{{ project.name }}</h3></center>
+            <div>
+                <span class="badge badge-pill badge-info">{{project.subject}}</span>
+                <span class="badge badge-pill badge-success">{{project.grade}}</span>
+                <span class="badge badge-pill badge-warning">{{project.teacher_parent.user.first_name}} {{project.teacher_parent.user.last_name}}</span>
+            </div>
 
             {% if current_user == project.teacher_parent_id %}
                 <div class="row">
@@ -36,13 +41,16 @@
         
 
             {% else %}
-                <div>Description: 
+                <div class="row">
+                    <h6 class="card-title col-sm-2">Description: </h6>
                     <p class="card-text">{{ project.description }}</p>
                 </div>
-                <div>Supplies: 
+                <div class="row">
+                    <h6 class="card-title col-sm-2">Supplies: </h6>
                     <p class="card-text">{{ project.supplies_needed }}</p>
                 </div>
-                <div>Instructions: 
+                <div class="row">
+                    <h6 class="card-title col-sm-2">Instructions:</h6> 
                     <p class="card-text">{{ project.instruction }}</p>
                 </div>
             {% endif %}

@@ -14,6 +14,12 @@
                     </h5>
                     <p>{{ my_project.description }}</p>
                 </div>
+                <div class="card-footer text-muted">
+                    <div>
+                        <span class="badge badge-pill badge-info">{{my_project.subject}}</span>
+                        <span class="badge badge-pill badge-success">{{my_project.grade}}</span>
+                    </div> 
+                </div> 
             </div>
         </div>
         {% endfor %}
