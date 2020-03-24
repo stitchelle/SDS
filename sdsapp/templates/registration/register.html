@@ -1,24 +1,42 @@
 {% extends 'shared/base.html' %}
 
 {% block content %}
-    <h2>Register</h2>
-    <form method="post">
-        {% csrf_token %}
-    <!--     These values will be saved as part of a new User instance -->
-        <input type="text" placeholder="username" name="username">
-        <input type="text" placeholder="password" name="password">
-        <input type="email" placeholder="email" name="email">
-        <input type="text" placeholder="first name" name="first_name">
-        <input type="text" placeholder="last name" name="last_name">
-    <!--     This value will be saved on the new teacher parent instance -->
-        {% comment %} <input type="text" placeholder="is_teacher" name="is_teacher"> {% endcomment %}
-        {% comment %} <fieldset>
-            <label for="is_teacher">Role: </label>
-            <select id="is_teacher" type="text" name="is_teacher">
-                <option value="True">Teacher</option>
-                <option value="False">Parent</option>
-            </select>
-        </fieldset> {% endcomment %}
-        <button type="submit">Login</button>
-    </form>
+    <div class="card" style="width: 20rem; margin-left: auto; margin-right: auto; margin-top: 50px;">
+        <div class="card-body" style="margin-left: auto; margin-right: auto; ">
+            <h2 class="card-title"><center>Register</center></h2>
+            <form method="post">
+                {% csrf_token %}
+            <!--     These values will be saved as part of a new User instance -->
+                <div class="form-group">
+                    <input type="text" placeholder="first name" name="first_name">
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="last name" name="last_name">
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="username" name="username">
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="password" name="password">
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="confirm password" name="confirm password">
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="email" name="email">
+                </div>
+                
+            <!--     This value will be saved on the new teacher parent instance -->
+                {% comment %} <input type="text" placeholder="is_teacher" name="is_teacher"> {% endcomment %}
+                {% comment %} <fieldset>
+                    <label for="is_teacher">Role: </label>
+                    <select id="is_teacher" type="text" name="is_teacher">
+                        <option value="True">Teacher</option>
+                        <option value="False">Parent</option>
+                    </select>
+                </fieldset> {% endcomment %}
+                <center><button type="submit" class="btn btn-primary">Submit</button></center>
+            </form>
+        </div>
+    </div>
 {% endblock %}
