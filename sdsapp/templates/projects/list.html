@@ -11,8 +11,16 @@
               <h5 class="card-title"><a href="{% url 'sdsapp:project' project.id %}"> {{ project.name }} </a></h5>
               <p>{{ project.description }}</p>
             </div>
+            <div class="card-footer text-muted">
+              <div>
+                <span class="badge badge-pill badge-info">{{project.subject}}</span>
+                <span class="badge badge-pill badge-success">{{project.grade}}</span>
+                <span class="badge badge-pill badge-warning">{{project.teacher_parent.user.first_name}} {{project.teacher_parent.user.last_name}}</span>
+              </div> 
+            </div> 
           </div>
         </div>
+        
       {% endfor %}
     </div>
     
