@@ -16,12 +16,12 @@
 
         <form action="{% url 'sdsapp:project_edit_form' project.id %}" method="GET">
             {% csrf_token %}
-            <button>Edit</button>
+            <button type="submit" class="btn btn-primary btn-sm" >Edit</button>
         </form>
         <form action="{% url 'sdsapp:project' project.id %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="actual_method" value="DELETE">
-            <button>Delete</button>
+            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
         </form>
 
     {% else %}
