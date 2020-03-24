@@ -2,13 +2,21 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <h1>Welcome to Steam Driven School</h1>
-        <a href="{% url 'sdsapp:projects'%}">Browse Projects</a>
-        <a href=/project/form>Add New Project</a>
+        <center style="margin-top : 20px;">
+            <div style="margin-top : 20px;">
+                <h1>Welcome to Steam Driven School</h1>
+                <a href="{% url 'sdsapp:projects'%}" class="btn btn-light active btn-sm " role="button" aria-pressed="true">Browse Projects</a>
+                <a href=/project/form class="btn btn-light active btn-sm " role="button" aria-pressed="true">Add New Project</a>
+            </div>
+        </center>
     {% else %}
-        <h1>Welcome to Steam Driven School</h1>
-        <a href="{% url 'sdsapp:login'%}">Login</a>
-        <a href="{% url 'sdsapp:register'%}">Register</a>
+        <center style="margin-top : 20px;">
+            <h1>Welcome to Steam Driven School</h1>
+            <div style="margin-top : 20px;">
+                <a href="{% url 'sdsapp:login'%}" class="btn btn-light active btn-sm " role="button" aria-pressed="true">Login</a>
+                <a href="{% url 'sdsapp:register'%}" class="btn btn-light active btn-sm " role="button" aria-pressed="true">Register</a>
+            </div>
+        </center>
     {% endif %}
 
 {% endblock %}
