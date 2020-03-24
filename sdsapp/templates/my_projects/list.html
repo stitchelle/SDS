@@ -1,13 +1,21 @@
 {% extends 'shared/base.html' %}
 
 {% block content %}
-    <h1>My Projects</h1>
-        <a href=/project/form>Add New Project</a>
+    <h3><center>My Projects</center></h3>
+        <center><a href=/project/form class="btn btn-primary btn-lg active btn-sm " role="button" aria-pressed="true">Add New Project</a></center>
 
-    {% for my_project in all_my_projects %}
-        <h3>
-            <a href="{% url 'sdsapp:project' my_project.id %}"> {{ my_project.name }} </a>
-        </h3>
-        <p>{{ my_project.description }}</p>
-    {% endfor %}
+    <div class="row row-cols-1 row-cols-md-3" style="margin-top: 20px; margin-left:auto; margin-right:auto"">
+        {% for my_project in all_my_projects %}
+        <div class="col mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{% url 'sdsapp:project' my_project.id %}"> {{ my_project.name }} </a>
+                    </h5>
+                    <p>{{ my_project.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock %}
