@@ -3,12 +3,12 @@
 {% block content %}
 
     {% if project.id is not None %}
-        <div class="card" style="width: 50rem; margin-left: auto; margin-right: auto; margin-top: 50px;">
+        <div class="card" style="margin-left: auto; margin-right: auto; margin-top: 50px;">
             <div class="card-body">
                 <h3 class="card-title"><center>Edit Project</center></h1>
                 <form action="{% url 'sdsapp:project' project.id %}" method="post">
     {% else %}
-        <div class="card" style="width: 50rem; margin-left: auto; margin-right: auto; margin-top: 50px;">
+        <div class="card" style="margin-left: auto; margin-right: auto; margin-top: 50px;">
             <div class="card-body">
                 <h3 class="card-title"><center>New Project</center></h1>
                 <form action="{% url 'sdsapp:projects' %}" method="post">
