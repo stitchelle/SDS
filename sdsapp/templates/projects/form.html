@@ -31,12 +31,18 @@
                     sources: [ 'local', 'url', 'image_search','camera','dropbox','facebook','instagram','shutterstock'],
                     googleApiKey: 'AIzaSyC1dya2DQfLq-DnA0D_HhRGuAasAPBT1eQ',
                     searchBySites: ["all", "cloudinary.com"],
-                    searchByRights: true }, (error, result) => { }); 
+                    searchByRights: true }, (error, result) => {
+                        if (!error && result && result.event === "success") {
+                            let new_image = result.info.url
+                            document.getElementById("image_path").value=new_image
+                        }
+                     }); 
 
                 document.getElementById("upload_widget").addEventListener("click", function(){
                     myWidget.open();
                 }, false);
                 </script>
+                <input type="hidden" id="image_path" name="image_path">
             </div>
             <div class="form-group row">
                 <label for="project" class="col-sm-2 col-form-label">Project Name: </label>

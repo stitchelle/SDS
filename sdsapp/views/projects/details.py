@@ -42,6 +42,7 @@ def project_details(request, project_id):
             project_to_update.supplies_needed = form_data['supplies']
             project_to_update.description = form_data['description']
             project_to_update.instruction = form_data['instruction']
+            project_to_update.image_path = form_data['image_path']
 
 
             # # Save the change to the db
