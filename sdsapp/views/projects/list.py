@@ -32,7 +32,8 @@ def project_list(request):
             instruction = form_data['instruction'],
             grade_id = form_data["grade"],
             subject_id = form_data["subject"],
-            teacher_parent_id = current_user.id
+            teacher_parent_id = current_user.id,
+            image_path = form_data ['image_path']
         )
 
         # and then save to the db

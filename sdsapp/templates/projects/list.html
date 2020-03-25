@@ -7,6 +7,7 @@
       {% for project in all_projects %}
         <div class="col mb-4">
           <div class="card h-100">
+            <img src="{{project.image_path}}" class="card-img-top" alt="{{project.image_path}}">
             <div class="card-body">
               <h5 class="card-title"><a href="{% url 'sdsapp:project' project.id %}"> {{ project.name }} </a></h5>
               <p>{{ project.description }}</p>
