@@ -1,6 +1,8 @@
 import sqlite3
 from django.shortcuts import redirect, render, reverse
 from sdsapp.models import Project
+from sdsapp.models import Dashboard
+from sdsapp.models import SavedProject
 from ..connection import Connection
 from django.contrib.auth.decorators import login_required
 
@@ -8,14 +10,22 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def project_list(request):
     if request.method == 'GET':
+        current_user = request.user.teacher_parent
 
         all_projects = Project.objects.all()
         grade_id = request.GET.get('grade', None)
+
         subject_id = request.GET.get('subject',None)
+
+        all_saved_projects = SavedProject.objects.all()
+
+        all_dashboards = Dashboard.objects.filter(teacher_parent_id=current_user.id)
 
         template = 'projects/list.html'
         context = {
-            'all_projects': all_projects
+            'all_projects': all_projects,
+            'all_dashboards': all_dashboards,
+            'all_saved_projects': all_saved_projects
         }
 
         return render(request, template, context)
