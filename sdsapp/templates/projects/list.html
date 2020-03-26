@@ -19,12 +19,12 @@
                 <span class="badge badge-pill badge-warning">{{project.teacher_parent.user.first_name}} {{project.teacher_parent.user.last_name}}</span>
 
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#exampleModal" style=" float: right;">
+                <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#{{project.id}}" style=" float: right;">
                   <i class="far fa-star"></i>
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" value="{{project.id}}">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -38,7 +38,7 @@
                         </button>
                         </div>
                       </div>
-                      <form action="{% url 'sdsapp:dashboards' %}" method="post">
+                      <form action="{% url 'sdsapp:projects' %}" method="post">
                         <div class="modal-body">
                           {% csrf_token %}
                           <input type="hidden" id="project" name="project" value={{saved_project.project.id}}>
@@ -51,7 +51,7 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save to Dashboard</button>
+                          <button type="submit" class="btn btn-primary" name="actual_method" value="saved_project">Save to Dashboard</button>
                         </div>
                       </form>
                     </div>

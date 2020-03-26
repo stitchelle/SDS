@@ -32,22 +32,42 @@ def project_list(request):
     elif request.method == 'POST':
         form_data = request.POST
 
-        current_user = request.user.teacher_parent
+         # Check if this POST is for actual_method is a project
+        if (
+            "actual_method" in form_data
+            and form_data["actual_method"] == "project"
+        ):
+            current_user = request.user.teacher_parent
 
-        # instantiate...
-        new_project = Project(
-            name = form_data['project'],
-            supplies_needed = form_data['supplies'],
-            description = form_data['description'],
-            instruction = form_data['instruction'],
-            grade_id = form_data["grade"],
-            subject_id = form_data["subject"],
-            teacher_parent_id = current_user.id,
-            image_path = form_data ['image_path']
+            # instantiate...
+            new_project = Project(
+                name = form_data['project'],
+                supplies_needed = form_data['supplies'],
+                description = form_data['description'],
+                instruction = form_data['instruction'],
+                grade_id = form_data["grade"],
+                subject_id = form_data["subject"],
+                teacher_parent_id = current_user.id,
+                image_path = form_data ['image_path']
+            )
+
+            # and then save to the db
+            print(new_project.name)
+            new_project.save()
+
+            return redirect(reverse('sdsapp:projects'))
+
+        # Check if this POST is for adding project to dashboard
+        if (
+            "actual_method" in form_data
+            and form_data["actual_method"] == "saved_project"
+        ):
+            new_saved_project = SavedProject(
+            project_id = form_data['project'],
+            dashboard_id =form_data['dashboard'],
+            note = form_data['note']
         )
 
-        # and then save to the db
-        print(new_project.name)
-        new_project.save()
+        new_saved_project.save()
 
         return redirect(reverse('sdsapp:projects'))

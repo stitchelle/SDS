@@ -32,14 +32,9 @@ def dashboard_list(request):
             name = form_data['dashboard'],
             teacher_parent_id = current_user.id,
         )
-        new_saved_project = SavedProject(
-            project_id = form_data['project'],
-            dashboard_id =form_data['dashboard'],
-            note = form_data['note']
-        )
+    
         # and then save to the db
         print(new_dashboard.name)
         new_dashboard.save()
-        new_saved_project()
 
         return redirect(reverse('sdsapp:dashboards'))
