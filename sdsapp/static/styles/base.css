@@ -10,10 +10,6 @@
     margin: 0 0.5em;
 }
 
-/* h1 {
-    font-family: 'Permanent Marker', cursive;
-} */
-
 .navbar-brand {
     font-family: 'Permanent Marker';
 }
@@ -60,7 +56,7 @@ nav{
     border-bottom: 2px solid black;
 }
 
-div.form-card {
+div.form-card{
     border: 2px solid black;
 }
 
@@ -69,6 +65,14 @@ div.subject-card{
 }
 
 div.detail-card{
+    border: 2px solid black;
+}
+
+div.login-card{
+    border: 2px solid black;
+}
+
+div.register-card{
     border: 2px solid black;
 }
 
@@ -82,4 +86,8 @@ h6.card-title{
 
 div.pills{
     margin-bottom: 10px;
+}
+
+img.home-image{
+    margin: 40px;
 }
