@@ -41,7 +41,7 @@
                       <form action="{% url 'sdsapp:projects' %}" method="post">
                         <div class="modal-body">
                           {% csrf_token %}
-                          <input type="hidden" id="project" name="project" value={{saved_project.project.id}}>
+                          <input type="hidden" id="project" name="project" value={{project.id}}>
                             <input id="note" type="text" name="note"  value="{{ saved_project.note }}" placeholder="Enter Notes" class="form-control" required>
                           <select id="dashboard" type="text" class="form-control" name="dashboard" required>
                           {% for dashboard in all_dashboards %}

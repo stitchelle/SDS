@@ -67,7 +67,7 @@ def project_list(request):
             dashboard_id =form_data['dashboard'],
             note = form_data['note']
         )
-
-        new_saved_project.save()
+            print(new_saved_project.id)
+            new_saved_project.save()
 
         return redirect(reverse('sdsapp:projects'))

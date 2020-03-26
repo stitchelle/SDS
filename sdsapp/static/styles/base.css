@@ -53,6 +53,7 @@ h3{
 button.dashboard{
     border: 2px solid black;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 nav{

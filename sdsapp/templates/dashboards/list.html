@@ -32,7 +32,8 @@
     </div>
     
     {% for dashboard in all_dashboards %}
-        <h3 style="margin-left:15px;" classname"dashboard_name"">{{ dashboard.name }}</h3>
+    
+        <h3 style="margin-left:15px;" classname"dashboard_name">{{ dashboard.name }}</h3>
             <div class="row row-cols-1 row-cols-md-3" style="margin-top: 20px; margin-left:auto; margin-right:auto">
             {% for saved_project in all_saved_projects %}
 
@@ -42,7 +43,8 @@
                         <img src="{{saved_project.image_path}}" class="card-img-top" alt="{{saved_project.image_path}}">
                         <div class="card-body">
                             <h5 class="card-title"><a href="{% url 'sdsapp:project' saved_project.project.id %}"> {{ saved_project.project.name }} </a></h5>
-                            <p>{{ saved_project.project.description }}</p>
+                            <p>Notes: {{ saved_project.note }}</p>
+                            <p>Description: {{ saved_project.project.description }}</p>
                         </div>
                         <div class="card-footer text-muted">
                             <div>
