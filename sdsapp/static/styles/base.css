@@ -1,7 +1,7 @@
 .navList {
     list-style-type: none;
     display: flex;
-    border: 1px solid lightgray;
+    border: px solid lightgray;
     padding: 1em;
     width: 100%;
 }
@@ -16,4 +16,16 @@
 
 .navbar-brand {
     font-family: 'Permanent Marker';
+}
+
+body {
+    background: url(../../static/styles/Michelle_BG.png) no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+h1.homeTitle{
+    background-color: white;
+    padding: 10px;
 }
