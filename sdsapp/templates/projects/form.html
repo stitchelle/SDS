@@ -60,7 +60,7 @@
                         <option {% if subject.id == project.subject_id %}selected{% endif %}  value="{{ subject.id }}">{{ subject.name }}</option>
                     {% endfor %}
                     </select>
-                    <a href=/subject/form class="btn btn-light active btn-sm " role="button" aria-pressed="true" style="margin-top : 15px;">Add New Subject</a>
+                    <a href=/subject/form class="btn btn-light active btn-md " role="button" aria-pressed="true" style="margin-top : 15px;">Add New Subject</a>
                 </div>
             </div>
 
@@ -98,9 +98,9 @@
 
             {% if project.id is not None %}
                 <input type="hidden" name="actual_method" value="PUT">
-                <center><button type="submit" class="btn btn-primary btn-sm">Update</button></center>
+                <center><button type="submit" class="btn btn-primary btn-md">Update</button></center>
             {% else %}
-                <center><button type="submit" class="btn btn-primary btn-sm" name="actual_method" value="project">Create</button></center>
+                <center><button type="submit" class="btn btn-primary btn-md" name="actual_method" value="project">Create</button></center>
             {% endif %}        
             </form>
         </div>
