@@ -3,7 +3,7 @@
 {% block content %}
     <h1 style="margin-top : 20px;"><center>Dashboards</center></h1>
     <!-- Button trigger modal -->
-    <center><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+    <center><button type="button" class="btn btn-primary btn-sm dashboard" data-toggle="modal" data-target="#exampleModal">
     New Dashboard
     </button></center>
 
@@ -32,13 +32,13 @@
     </div>
     
     {% for dashboard in all_dashboards %}
-        <h3 style="margin-left:15px;">{{ dashboard.name }}</h3>
+        <h3 style="margin-left:15px;" classname"dashboard_name"">{{ dashboard.name }}</h3>
             <div class="row row-cols-1 row-cols-md-3" style="margin-top: 20px; margin-left:auto; margin-right:auto">
             {% for saved_project in all_saved_projects %}
 
                 {% if saved_project.dashboard_id == dashboard.id %}
                 <div class="col mb-4">
-                    <div class="card h-100">
+                    <div class="card h-100 my_project_card">
                         <img src="{{saved_project.image_path}}" class="card-img-top" alt="{{saved_project.image_path}}">
                         <div class="card-body">
                             <h5 class="card-title"><a href="{% url 'sdsapp:project' saved_project.project.id %}"> {{ saved_project.project.name }} </a></h5>

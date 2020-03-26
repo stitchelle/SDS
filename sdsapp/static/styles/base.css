@@ -22,10 +22,39 @@ body {
     background: url(../../static/styles/Michelle_BG.png) no-repeat center center fixed;
     background-size: cover;
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
-h1.homeTitle{
+h1{
     background-color: white;
     padding: 10px;
+    width: fit-content;
+    margin: auto;
+    border-radius: .5;
+    border: 5px solid black;
+    border-radius: 5px;
+}
+
+div.my_project_card{
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+h3{
+    background-color: white;
+    padding: 10px;
+    width: fit-content;
+    margin: auto;
+    border-radius: .5;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+button.dashboard{
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+nav{
+    border-bottom: 2px solid black;
 }

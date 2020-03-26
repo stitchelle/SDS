@@ -2,12 +2,13 @@
 
 {% block content %}
     <h1 style="margin-top : 20px;"><center>My Projects</center></h1>
-        <center><a href=/project/form class="btn btn-primary active btn-sm " role="button" aria-pressed="true">Add New Project</a></center>
+        <center><a href=/project/form class="btn btn-primary active btn-sm" role="button" aria-pressed="true" style="border: 2px solid black;
+    border-radius: 5px;">Add New Project</a></center>
 
-    <div class="row row-cols-1 row-cols-md-3" style="margin-top: 20px; margin-left:auto; margin-right:auto">
+    <div class="row row-cols-1 row-cols-md-3 " style="margin-top: 20px; margin-left:auto; margin-right:auto">
         {% for my_project in all_my_projects %}
         <div class="col mb-4">
-            <div class="card h-100">
+            <div class="card h-100 my_project_card">
                 <img src="{{my_project.image_path}}" class="card-img-top" alt="{{my_project.image_path}}">
                 <div class="card-body">
                     <h5 class="card-title">
