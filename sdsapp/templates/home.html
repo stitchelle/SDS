@@ -3,6 +3,7 @@
 {% block content %}
     {% if user.is_authenticated %}
         <center style="margin-top : 20px;">
+            <img class="home-image" src="../../static/styles/SDS-train.png" alt="Steam driven train" width="600" height="600">
             <div style="margin-top : 20px;">
                 <h1 class="homeTitle">Welcome to Steam Driven School</h1>
                 <a href="{% url 'sdsapp:projects'%}" class="btn btn-light active btn-sm " role="button" aria-pressed="true" style="border: 2px solid black;">Browse Projects</a>
@@ -11,6 +12,7 @@
         </center>
     {% else %}
         <center style="margin-top : 20px;">
+        <img class="home-image" src="../../static/styles/SDS-train.png" alt="Steam driven train" width="600" height="600">
             <h1 class="homeTitle">Welcome to Steam Driven School</h1>
             <div style="margin-top : 20px;">
                 <a href="{% url 'sdsapp:login'%}" class="btn btn-light active btn-sm " role="button" aria-pressed="true" style="border: 2px solid black;">Login</a>
