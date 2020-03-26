@@ -13,6 +13,9 @@ urlpatterns = [
     path('teacher_parents/', teacher_parent_list, name='teacher_parents'),
     path('subjects/', subject_list, name='subjects'),
     path('my_projects/', my_project_list, name='my_projects'),
+    path('dashboards/', dashboard_list, name='dashboards'),
+    
+
 
     
     path('accounts/', include('django.contrib.auth.urls')),

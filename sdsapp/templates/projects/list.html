@@ -1,12 +1,12 @@
 {% extends 'shared/base.html' %}
 
 {% block content %}
-    <h3 style="margin-top : 20px;"><center>Projects</center></h3>
+    <h1 style="margin-top : 20px;"><center>Projects</center></h1>
 
     <div class="row row-cols-1 row-cols-md-3" style="margin-top: 20px; margin-left:auto; margin-right:auto">
       {% for project in all_projects %}
         <div class="col mb-4">
-          <div class="card h-100">
+          <div class="card h-100 my_project_card">
             <img src="{{project.image_path}}" class="card-img-top" alt="{{project.image_path}}">
             <div class="card-body">
               <h5 class="card-title"><a href="{% url 'sdsapp:project' project.id %}"> {{ project.name }} </a></h5>
@@ -17,6 +17,46 @@
                 <span class="badge badge-pill badge-info">{{project.subject}}</span>
                 <span class="badge badge-pill badge-success">{{project.grade}}</span>
                 <span class="badge badge-pill badge-warning">{{project.teacher_parent.user.first_name}} {{project.teacher_parent.user.last_name}}</span>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#exampleModal-{{project.id}}" style=" float: right;">
+                  <i class="far fa-star"></i>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal-{{project.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">{{ project.name }}</h5>
+                        <div>
+                          <span class="badge badge-pill badge-info">{{project.subject}}</span>
+                          <span class="badge badge-pill badge-success">{{project.grade}}</span>
+                          <span class="badge badge-pill badge-warning">{{project.teacher_parent.user.first_name}} {{project.teacher_parent.user.last_name}}</span>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                      </div>
+                      <form action="{% url 'sdsapp:projects' %}" method="post">
+                        <div class="modal-body">
+                          {% csrf_token %}
+                          <input type="hidden" id="project" name="project" value={{project.id}}>
+                            <input id="note" type="text" name="note"  value="{{ saved_project.note }}" placeholder="Enter Notes" class="form-control" required>
+                          <select id="dashboard" type="text" class="form-control" name="dashboard" required>
+                          {% for dashboard in all_dashboards %}
+                            <option {% if dashboard.id == saved_project.subject_id %}selected{% endif %}  value="{{ dashboard.id }}">{{ dashboard.name }}</option>
+                          {% endfor %}
+                          </select>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary" name="actual_method" value="saved_project">Save to Dashboard</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
               </div> 
             </div> 
           </div>

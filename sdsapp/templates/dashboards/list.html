@@ -1,0 +1,62 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+    <h1 style="margin-top : 20px;"><center>Dashboards</center></h1>
+    <!-- Button trigger modal -->
+    <center><button type="button" class="btn btn-primary btn-sm dashboard" data-toggle="modal" data-target="#exampleModal">
+    New Dashboard
+    </button></center>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New Dashboard</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{% url 'sdsapp:dashboards' %}" method="post">
+                    <div class="modal-body">
+                        {% csrf_token %}
+                        <input id="dashboard" type="text" name="dashboard"  value="{{ dashboard.name }}" placeholder="Enter Dashboard Name" class="form-control" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" value="Add" class="btn btn-primary" name="actual_method" value="dashboard">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    {% for dashboard in all_dashboards %}
+    
+        <h3 style="margin-left:15px;" classname"dashboard_name">{{ dashboard.name }}</h3>
+            <div class="row row-cols-1 row-cols-md-3" style="margin-top: 20px; margin-left:auto; margin-right:auto">
+            {% for saved_project in all_saved_projects %}
+
+                {% if saved_project.dashboard_id == dashboard.id %}
+                <div class="col mb-4">
+                    <div class="card h-100 my_project_card">
+                        <img src="{{saved_project.image_path}}" class="card-img-top" alt="{{saved_project.image_path}}">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{% url 'sdsapp:project' saved_project.project.id %}"> {{ saved_project.project.name }} </a></h5>
+                            <p>Notes: {{ saved_project.note }}</p>
+                            <p>Description: {{ saved_project.project.description }}</p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <div>
+                                <span class="badge badge-pill badge-info">{{saved_project.project.subject}}</span>
+                                <span class="badge badge-pill badge-success">{{saved_project.project.grade}}</span>
+                                <span class="badge badge-pill badge-warning">{{saved_project.project.teacher_parent.user.first_name}} {{saved_project.project.teacher_parent.user.last_name}}</span>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                {%endif%}
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}
