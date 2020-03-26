@@ -58,3 +58,27 @@ button.dashboard{
 nav{
     border-bottom: 2px solid black;
 }
+
+div.form-card {
+    border: 2px solid black;
+}
+
+div.subject-card{
+    border: 2px solid black;
+}
+
+div.detail-card{
+    border: 2px solid black;
+}
+
+label{
+    min-width: 150px;
+}
+
+h6.card-title{
+    min-width: 150px;
+}
+
+div.pills{
+    margin-bottom: 10px;
+}
