@@ -22,19 +22,24 @@ def dashboard_list(request):
         }
 
         return render(request, template, context)
-    # elif request.method == 'POST':
-    #     form_data = request.POST
+    elif request.method == 'POST':
+        form_data = request.POST
 
-    #     current_user = request.user.teacher_parent
+        current_user = request.user.teacher_parent
 
-    #     # instantiate...
-    #     new_dashboard = Dashboard(
-    #         name = form_data['dashboard'],
-    #         teacher_parent_id = current_user.id,
-    #     )
+        # instantiate...
+        new_dashboard = Dashboard(
+            name = form_data['dashboard'],
+            teacher_parent_id = current_user.id,
+        )
+        new_saved_project = SavedProject(
+            project_id = form_data['project'],
+            dashboard_id =form_data['dashboard'],
+            note = form_data['note']
+        )
+        # and then save to the db
+        print(new_dashboard.name)
+        new_dashboard.save()
+        new_saved_project()
 
-    #     # and then save to the db
-    #     print(new_dashboard.name)
-    #     new_dashboard.save()
-
-    #     return redirect(reverse('sdsapp:dashboards'))
+        return redirect(reverse('sdsapp:dashboards'))
