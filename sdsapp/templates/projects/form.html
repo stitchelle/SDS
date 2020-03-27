@@ -75,25 +75,25 @@
                     </select>
                 </div>
             </div>
-
-            <div class="form-group row">
-                <label for="supplies" class="col-sm-2 col-form-label">Supplies: </label>
-                <div class="col-sm-10">
-                    <textarea id="supplies" class="form-control" name="supplies" rows="3" required>{{ project.supplies_needed }}</textarea>
-                </div>
-            </div>
-
+            
             <div class="form-group row">
                 <label for="decription" class="col-sm-2 col-form-label">Description: </label>
                 <div class="col-sm-10">
                     <textarea id="description" class="form-control" name="description" rows="3" required>{{ project.description }}</textarea>
                 </div>
             </div>
+
+            <div class="form-group row">
+                <label for="supplies" class="col-sm-2 col-form-label">Supplies: </label>
+                <div class="col-sm-10">
+                    <textarea id="supplies" class="form-control" name="supplies" rows="5" required>{{ project.supplies_needed }}</textarea>
+                </div>
+            </div>
             
             <div class="form-group row" >
                 <label for="instruction" class="col-sm-2 col-form-label">Instructions: </label>
                 <div class="col-sm-10">
-                    <textarea id="instruction" class="form-control" name="instruction" rows="3" required>{{ project.instruction }}</textarea>
+                    <textarea id="instruction" class="form-control" name="instruction" rows="10" required>{{ project.instruction }}</textarea>
                 </div>
             </div>
 
