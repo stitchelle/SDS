@@ -76,6 +76,10 @@ div.register-card{
     border: 2px solid black;
 }
 
+div.profile-card{
+    border: 2px solid black;
+}
+
 label{
     min-width: 150px;
 }

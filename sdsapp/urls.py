@@ -7,6 +7,8 @@ app_name = "sdsapp"
 
 urlpatterns = [
     path('', home, name='home'),
+    path('profile/', profile, name='profile'),
+    
     path('projects/', project_list, name='projects'),
     path('grades/', grade_list, name='grades'),
     path('instructions/', instruction_list, name='instructions'),
