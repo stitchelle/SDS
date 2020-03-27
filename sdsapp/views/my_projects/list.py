@@ -20,25 +20,4 @@ def my_project_list(request):
         }
 
         return render(request, template, context)
-    elif request.method == 'POST':
-        form_data = request.POST
-
-        current_user = request.user.teacher_parent
-
-        # instantiate...
-        new_project = Project(
-            name = form_data['project'],
-            supplies_needed = form_data['supplies'],
-            description = form_data['description'],
-            instruction = form_data['instruction'],
-            grade_id = form_data["grade"],
-            subject_id = form_data["subject"],
-            teacher_parent_id = current_user.id,
-            image_path = form_data['image_path']
-        )
-
-        # and then save to the db
-        print(new_project.name)
-        new_project.save()
-
-        return redirect(reverse('sdsapp:my_projects'))
+    
