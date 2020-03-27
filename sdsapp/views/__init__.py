@@ -8,6 +8,7 @@ from .dashboards.list import dashboard_list
 
 
 from .home import home
+from .profile import profile
 from .auth.logout import logout_user
 from .registration.register import register_user
 
