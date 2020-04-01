@@ -25,10 +25,6 @@
 * Create a superuser for your local version of the app:
 
   * `python manage.py createsuperuser`
-  
-* Populate your database with initial data from fixtures files: (NOTE: every time you run this it will remove exisiting data and repopulate the tables)
-
-  * `python manage.py loaddata` # Fill this in when you have fixtures!!!!!
 
 * Fire up your dev server and get to work!
 
@@ -39,6 +35,4 @@ I developed this ERD for you to reference when creating your models.
 
 https://dbdiagram.io/d/5e41d3089e76504e0ef1467b
 
-## Using the Steam Driven School System:
 
-# Fill this in LATER!!!!!
